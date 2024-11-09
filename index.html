@@ -32,32 +32,41 @@
             background-color: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        /* Image and Author Container */
+        .image-container {
+            width: 200px;
+            text-align: center;
+            margin-right: 20px;
+        }
+
+        .story-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .author {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        /* Story Content */
+        .story-content {
+            flex: 1;
+            font-size: 1.1em;
+            text-align: justify;
         }
 
         /* Story Title */
         .story-title {
             font-size: 1.8em;
-            text-align: center;
-            margin-bottom: 20px;
             color: #333;
-        }
-
-        /* Story Image */
-        .story-image {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .story-image img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        /* Story Text */
-        .story-content {
-            font-size: 1.1em;
-            text-align: justify;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -70,16 +79,22 @@
 
     <!-- Story Container -->
     <div class="container">
-        <div class="story-title">The Silent Architect</div>
-
-        <!-- Story Image -->
-        <div class="story-image">
-            <img src="The Silent Architect Image.png" alt="The Silent Architect Image">
+        
+        <!-- Image and Author Section -->
+        <div class="image-container">
+            <div class="story-image">
+                <img src="path_to_your_image.png" alt="The Silent Architect Image">
+            </div>
+            <div class="author">By ChatGPT</div>
         </div>
 
-        <!-- Story Content (Loaded Dynamically) -->
-        <div id="story-content" class="story-content">
-            <!-- The story will be loaded here -->
+        <!-- Story Content Section -->
+        <div class="story-content">
+            <div class="story-title">The Silent Architect</div>
+            <!-- Story Content Loaded Dynamically -->
+            <div id="story-text">
+                <!-- Story content will be loaded here from story.txt -->
+            </div>
         </div>
     </div>
 
@@ -90,7 +105,7 @@
             .then(data => {
                 // Format line breaks by wrapping each line in a paragraph tag
                 const formattedData = data.split('\n').map(line => `<p>${line}</p>`).join('');
-                document.getElementById('story-content').innerHTML = formattedData;
+                document.getElementById('story-text').innerHTML = formattedData;
             })
             .catch(error => console.error('Error loading story:', error));
     </script>
