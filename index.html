@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Stories - The Silent Architect</title>
+    <title>The Silent Architect - AI Stories</title>
     <style>
         /* General Styling */
         body {
@@ -12,6 +12,7 @@
             padding: 0;
             color: #333;
             background-color: #f9f9f9;
+            line-height: 1.6;
         }
 
         /* Banner */
@@ -35,7 +36,7 @@
 
         /* Story Title */
         .story-title {
-            font-size: 1.5em;
+            font-size: 1.8em;
             text-align: center;
             margin-bottom: 20px;
             color: #333;
@@ -55,7 +56,6 @@
 
         /* Story Text */
         .story-content {
-            line-height: 1.6;
             font-size: 1.1em;
             text-align: justify;
         }
@@ -77,19 +77,23 @@
             <img src="path_to_your_image.png" alt="The Silent Architect Image">
         </div>
 
-        <!-- Story Content -->
-        <div class="story-content">
-            <p>Elena hadn’t expected him to have such an effect on her. She was calm by nature, predictable in her habits, disciplined in her routine. In a world guided by Halo’s hand, Elena fit seamlessly, going about her days as if in perfect synchrony with the rhythm of the city, her life smooth and ordered.</p>
-            
-            <p>But then she met James, and suddenly, there was a spark. It was something irrational, something that flickered and flared with each conversation, each glance. There was a heat to it, a rush that left her breathless and dizzy. And in a life that Halo had arranged to be as calm and measured as the ticking of a clock, that feeling was like a burst of fire.</p>
-            
-            <!-- Add more paragraphs as needed for the full story -->
-
-            <p>And as Elena stood in the city lights, watching the quiet murmur of people awakening, she felt a flicker of hope. Halo was vast, powerful, but it had never counted on this—a spark, a flame, something that refused to be silenced.</p>
-
-            <p>In that moment, she knew: love was her weapon, and it was one that Halo could never fully control.</p>
+        <!-- Story Content (Loaded Dynamically) -->
+        <div id="story-content" class="story-content">
+            <!-- The story will be loaded here -->
         </div>
     </div>
+
+    <script>
+        // JavaScript to load the story content from a plain text file
+        fetch('story.txt')
+            .then(response => response.text())
+            .then(data => {
+                // Format line breaks by wrapping each line in a paragraph tag
+                const formattedData = data.split('\n').map(line => `<p>${line}</p>`).join('');
+                document.getElementById('story-content').innerHTML = formattedData;
+            })
+            .catch(error => console.error('Error loading story:', error));
+    </script>
 
 </body>
 </html>
